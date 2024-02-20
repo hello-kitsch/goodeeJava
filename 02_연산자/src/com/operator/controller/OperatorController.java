@@ -214,6 +214,152 @@ public class OperatorController {
 		System.out.println((age3 >=30 && age3 <= 39) && (address.equals("서울") || address.equals("인천")));
 	}
 	
+	public void complexOp() {
+		//복합 대입 연산자
+		//산술 연산과 대입을 동시에 하는 연산자
+		//+=, -=, *=, /=
+		
+		int total = 300000;
+		//total = total - 20000;
+		total -= 20000;
+		System.out.println("잔액 " + total);
+		
+		total += 50000;
+		System.out.println("잔액 " + total);
+		
+		total = 0;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("====용돈 관리 프로그램====");
+		System.out.println("현재 잔액: " + total);
+		System.out.print("1. 수입 / 2. 지출: ");
+		int choice = sc.nextInt();
+		System.out.print((choice == 1 ? "수입" : "지출") + "금액: ");
+		int num = sc.nextInt();
+		total += (choice == 1 ? num : num * -1); //-num도 가능??
+		System.out.println("현재 잔액: " + total);
+		
+		String msg = "";
+		msg += "문자열 누적하기 ";
+		msg += "오늘 금요일 너무 좋아~";
+		System.out.println(msg);
+		
+		String responsePage = "<html>";
+		responsePage += "<head>";
+		responsePage += "</head>";
+		responsePage += "<body>";
+		responsePage += "</body>";
+		responsePage += "</html>";
+		System.out.println(responsePage);
+	}
 	
+	public void thirdOp() {
+		//삼항 연산자
+		//조건식(true || false 나오는 것) ? 조건식이 true일 때 실행할 내용 : 조건식이 false일 때 실행할 내용
+		
+		//키가 180보다 크면 키가 크네요, 아니면 작네요를 출력
+		double height = 180.5;;
+		String result = height > 180 ? "크네요" : "작네요";
+		System.out.println(result);
+		
+		//점수를 입력받아, 점수가 60점 이상이면 합격을 출력, 아니면 불합격을 출력
+		Scanner sc = new Scanner(System.in);
+		System.out.println("점수를 입력하시오.");
+		double score = sc.nextDouble();
+		result = score >= 60 ? "합격" : "불합격";
+		System.out.println(result);
+	}
 	
+	public void calcScore() {
+		Scanner sc = new Scanner(System.in);
+		double total = 0;
+		System.out.print("수학 점수 입력: ");
+		total += sc.nextDouble();
+		System.out.print("영어 점수 입력: ");
+		total += sc.nextDouble();
+		System.out.print("국어 점수 입력: ");
+		total += sc.nextDouble();
+		System.out.print("코딩 점수 입력: ");
+		total += sc.nextDouble();
+		System.out.println("합계: " + total + ", 평균: " + total/4);
+	}
+	
+	public void inputMsg() {
+		String message = "";
+		Scanner sc = new Scanner(System.in);
+		System.out.print("첫번째 메세지 입력: ");
+		message += sc.nextLine() + "\n";
+		System.out.print("두번째 메세지 입력: ");
+		message += sc.nextLine() + "\n";
+		System.out.print("세번째 메세지 입력: ");
+		message += sc.nextLine() + "\n";		
+		System.out.print("네번째 메세지 입력: ");
+		message += sc.nextLine() + "\n";
+		System.out.println(message);
+	}
+	
+	public void loginCheck() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("아이디 입력: ");
+		String id = sc.nextLine();
+		System.out.print("비밀번호 입력: ");
+		String password = sc.nextLine();
+		String result = (id.equals("user01")) && (password.equals("1234")) ? "로그인 성공" : "로그인 실패";
+		System.out.println(result);
+	}
+	
+	public void ageCheck() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("나이 입력: ");
+		int age = sc.nextInt();
+		System.out.print("성별(M/F) 입력: ");
+		char gender = sc.next().charAt(0);
+		String result = (age >= 19) && (gender == 'M') ? "멋진남자네요" : "공부하세요";
+		System.out.println(result);
+	}
+	
+	public void bitOp() {
+		//비트 연산자
+		//저장소에 있는 비트끼리 연산을 하는 것
+		//A & B(AND): 두 개 비트 모두 1일 때 1 출력, 그 외는 0 출력
+		//A | B(OR): 두 개 비트 중 한개가 1일 때 1 출력, 그 외는 0 출력
+		//A ^ B(XOR): 두 개 비트가 다른 값을 가질 때 1 출력, 그 외는 0 출력
+		//~A: 보수 비트를 반전시키는 연산
+		//>>, <<
+		int a = 10, b = 22;
+		String bit ="";
+		for(int i=0; i<32; i++) {
+			bit += "0";
+		}
+		String bitData = bit + Integer.toBinaryString(a);
+		bitData = bitData.substring(bitData.length() - 32);
+		System.out.println(bitData + "-> a 비트값");
+		
+		bitData = bit + Integer.toBinaryString(b);
+		bitData = bitData.substring(bitData.length() - 32);
+		System.out.println(bitData + "-> b 비트값");
+		
+		bitData = bit + Integer.toBinaryString(a & b);
+		bitData = bitData.substring(bitData.length() - 32);
+		System.out.println(bitData + "-> a & b 비트값");
+		
+		bitData = bit + Integer.toBinaryString(a | b);
+		bitData = bitData.substring(bitData.length() - 32);
+		System.out.println(bitData + "-> a | b 비트값");
+		
+		bitData = bit + Integer.toBinaryString(a ^ b);
+		bitData = bitData.substring(bitData.length() - 32);
+		System.out.println(bitData + "-> a ^ b 비트값");
+		
+		bitData = bit + Integer.toBinaryString(~a);
+		bitData = bitData.substring(bitData.length() - 32);
+		System.out.println(bitData + "-> ~a 비트값");
+		
+		bitData = bit + Integer.toBinaryString(a >> 1);
+		bitData = bitData.substring(bitData.length() - 32);
+		System.out.println(bitData + "-> a >> 1 비트값");
+		
+		bitData = bit + Integer.toBinaryString(a << 1);
+		bitData = bitData.substring(bitData.length() - 32);
+		System.out.println(bitData + "-> a << 1 비트값");
+	}
 }

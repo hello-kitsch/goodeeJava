@@ -10,6 +10,13 @@ public class Main {
 		//new OperatorController().compareOp();
 		//new OperatorController().testStr();
 		//new OperatorController().checkAge();
-		new OperatorController().logicOp();
+		//new OperatorController().logicOp();
+		//new OperatorController().complexOp();
+		//new OperatorController().thirdOp();
+//		new OperatorController().calcScore();
+//		new OperatorController().inputMsg();
+//		new OperatorController().loginCheck();
+//		new OperatorController().ageCheck();		
+		new OperatorController().bitOp();
 	}
 }
