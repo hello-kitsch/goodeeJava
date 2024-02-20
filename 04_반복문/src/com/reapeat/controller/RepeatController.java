@@ -1,6 +1,7 @@
 package com.reapeat.controller;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 public class RepeatController {
@@ -253,28 +254,6 @@ public class RepeatController {
 			}
 			System.out.println();
 		}
-		
-		//*
-		//**
-		//***
-		//****
-		//*****
-		//****
-		//***
-		//**
-		//*
-		
-		//    *
-		//   **
-		//  ***
-		// ****
-		//*****
-		for(int i=0; i<5; i++) {
-			for(int j=5; j<5-i; j++) {
-				System.out.print(" ");
-			}
-			System.out.print(false);
-		}
 	}
 	
 	public void whileTest() {
@@ -324,71 +303,194 @@ public class RepeatController {
 			num = sc.nextInt();
 		}
 		
-		//
+		//메뉴를 출력하는 기능 -> while
 		int menu = 0;
 		while(menu != 9) {
-			
+			System.out.println("==== 점심메뉴 ====");
+			System.out.println("1. 구내식당");
+			System.out.println("2. 순대국밥");
+			System.out.println("3. 감자탕");
+			System.out.println("4. 김밥");
+			System.out.println("9. 선택 종료");
+			System.out.print("선택: ");
+			menu = sc.nextInt();
 		}
+		
+		//do~while
+		//do{반복할 코드} while(조건식);
+		char ch = 'Y';
+		while(ch=='N') {
+			System.out.println("반복");
+		}
+		
+		do {
+			System.out.println("do~while 반복");
+		} while (ch == 'N');
 	}
 	
-	public void bananaTest1() {
+	public void whileCalculator() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("문자열 하나 입력");
-		String test = sc.next();
+		char ch1 = 'Y';
+		while(ch1 == 'Y' || ch1 == 'y') {
+			System.out.print("피연산자 정수1 입력: ");
+			int num1 = sc.nextInt();
+			System.out.print("피연산자 정수2 입력: ");
+			int num2 = sc.nextInt();
+			System.out.print("연산자 입력: ");
+			char ch2 = sc.next().charAt(0);
+			switch(ch2) {
+				case '+': System.out.println(num1 + " + " + num2 + " = " + (num1 + num2)); break;
+				case '-': System.out.println(num1 + " - " + num2 + " = " + (num1 - num2)); break;
+				case '*': System.out.println(num1 + " * " + num2 + " = " + (num1 * num2)); break;
+				case '/': System.out.println(num1 + " / " + num2 + " = " + ((double)num1 / num2)); break;
+				default: 
+					System.out.println("잘못된 연산자를 입력하셨습니다.");
+					ch1 = 'Y';
+					continue;
+			}
+			System.out.println("계속하시겠습니까?(Y/N)");
+			ch1 = sc.next().charAt(0);
+			if(!(ch1 == 'Y' || ch1 == 'y' || ch1 == 'N' || ch1 == 'n')) {
+				System.out.println("잘못된 값을 입력하셨습니다.");
+			}
+		}
+		System.out.println("계산기를 종료합니다!");
+	}
+	
+	public void continueBreakTest() {
+		//분기문 활용하기
+		//continue: 반복문에서 continue문을 만나면 그 아래 코드를 생략하고 증감식으로 넘어감
+		//break: 반복문에서 break문을 만나면 반복문을 종료!
+		//분기문은 조건문과 같이 사용을 한다.
+		for(int i=0; i<10; i++) {
+			System.out.print(i+" ");
+		}
+		System.out.println();
+		
+		for(int i=0; i<10; i++) {
+			if(i % 3 == 0) {
+				continue;
+			}
+			System.out.print(i+" ");
+		}
+		System.out.println();
+		
+		for(int i=0; i<10; i++) {
+			if((i+1)%3 == 0) {
+				break;
+			}
+			System.out.print((i+1) + " ");
+		}
+		System.out.println();
 		
 		int count = 0;
-		char[] store = new char[test.length()];
-		
-		for(int i=0; i<test.length(); i++) {
-			char ch = test.charAt(i);
-			
-			for(int j=0; j<test.length(); j++) {
-				char target = test.charAt(j);
-				if(i != j && ch == target) {
-					
-					for(int k=0; k<store.length; k++) {
-						if(ch == store[k]) {
-							continue;
-						} else if(!(store[i] == ' ')) {
-							count++;
-							store[k] = ch;
-							break;
-						}
-					}
-					
-				}
-				
+		while(true) {
+			System.out.println(count++);
+			if(count > 9) {
+				break;
 			}
-			
 		}
-		System.out.println("중복된 문자 수: " + count);
-		for(int i=0; i<store.length; i++) {
-			if(!(store[i] == ' ')) { System.out.println("중복된 문자: " + store[i]); }
+		
+		//중첩 반복문에서 분기문 활용하기 -> break;
+		t: //네이밍을 부여해서 break문에 활용
+		for(int i=2; i<10; i++) {
+			for(int j=1; j<10; j++) {
+				System.out.print(i + "X" + j + "=" + i*j + " ");
+				if(j==5) {
+					break t;
+				}
+			}
+			System.out.println();
 		}
 	}
 	
-	public void bananaTest2() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("문자열 하나 입력");
-		String word = sc.next();
+	//자바에서 랜덤값을 출력하는 방법
+	public void randomTest() {
+		//임의의 수 출력하는 것
+		//1. Math 클래스에서 제공하는 random()기능 이용
+		//2. Random 클래스에서 제공하는 nextInt() 기능 이용
 		
-		int count;
-        HashMap<Character, Integer> dual = new HashMap<>();
-
-        for(int i=0; i<word.length(); i++) {
-            char ch = word.charAt(i);
-            if(!dual.containsKey(ch)) {
-                dual.put(ch, 0);
-            }
-            dual.put(ch, dual.get(ch)+1);
-        }
-        
-        //Set<Character> kSet = dual.keySet(); 
-        for(char c : dual.keySet()) {
-            if(dual.get(c) > 1) {
-                System.out.println("중복 문자: " + c);
-                System.out.println("중복 개수: " + dual.get(c));
-            }
-        }
+		//기본적으로 실수로 랜덤 값을 출력(0~1값)
+		System.out.println(Math.random());
+		//특정 범위의 정수값을 랜덤으로 출력
+		//(int)(Math.random() * 정수); -> 0 ~ 정수-1 의 범위 중 랜덤값 출력
+		//(int)(Math.random() * 10); -> 0~9 사이의 랜덤값
+		for(int i=0; i<5; i++) {
+			System.out.println((int)(Math.random() * 10) + 1);
+		}
+		
+		//Random 클래스 이용하기
+		Random rnd = new Random();
+		//nextInt()
+		System.out.println(rnd.nextInt());
+		//nextInt(정수) -> 0~정수-1 범위 랜덤값
+		//0~9
+		for(int i=0; i<10; i++) {
+			System.out.println(rnd.nextInt(10));
+		}
+	}
+	
+//	 설명 
+//  - 사용자에게 가위, 바위, 보 중 한개를 입력하도록하고(입력방식은 숫자)
+//  - 컴퓨터가 랜덤값으로 세개중 하나의 데이터를 대입
+//  - 컴퓨터의 값과 사용자의 값을 비교하여 다음의 결과출력
+//    같으면 비겼습니다. 출력 후 다시 사용자와 컴퓨터가 선택할 수 있도록 로직구성
+//    컴퓨터가 사용자에게 이기면 컴퓨터가 이겼습니다. 출력
+//    사용자가 컴퓨터에게 이기면 사용자가 있겼습니다. 출력   
+//
+// -  승자가 나왔으면 다시 하겠습니다 출력 
+//     다시하면 위에 로직 다시 실행
+//     종료하면 프로그램 종료
+// - 추가 : 만일 위 내용을 쉽게 처리 했으면 프로그램 종료시 지금까지 전적을 출력
+//        컴퓨터 승 00번, 사용자 승 00번
+	public void rspGame() {
+		Scanner sc = new Scanner(System.in);
+		int comWin = 0, userWin = 0, same = 0;
+		boolean ctn = true;
+		do {
+			System.out.print("1. 가위\n2. 바위\n3. 보\n중에 선택: ");
+			int user = sc.nextInt();
+			if(user < 1 || user > 3) {
+				System.out.println("올바른 선택지를 입력하세요");
+				continue;
+			}
+			int com = (int)(Math.random()*3) +1;
+			System.out.println("컴퓨터: " + com);
+			if (com == user) {
+				System.out.println("비겼습니다.");
+				same++;
+				continue;
+			} else if(com==1) {
+				switch(user) {
+					case 2: System.out.println("사용자가 이겼습니다."); userWin++; break;
+					case 3: System.out.println("컴퓨터가 이겼습니다."); comWin++; break;
+				}
+			} else if(com==2) {
+				switch(user) {
+				case 1: System.out.println("컴퓨터가 이겼습니다."); comWin++; break;
+				case 3: System.out.println("사용자가 이겼습니다."); userWin++; break;
+				}
+			} else if(com==3) {
+				switch(user) {
+				case 1: System.out.println("사용자가 이겼습니다."); userWin++; break;
+				case 2: System.out.println("컴퓨터가 이겼습니다."); comWin++; break;
+				}
+			}
+			while(true) { 
+				System.out.print("다시 하시겠습니까? (Y/N)");
+				char ch = sc.next().charAt(0);
+				if(ch == 'Y' || ch == 'y') {
+					ctn = true;
+					break;
+				} else if(ch == 'N' || ch == 'n') {
+					System.out.println("가위바위보 프로그램을 종료합니다.");
+					ctn = false;
+					break;
+				} else {
+					System.out.println("잘못 입력하셨습니다.");
+				}
+			}
+		} while (ctn);
+		System.out.println("컴퓨터 승 " + comWin + "번, 사용자 승 " + userWin + "번, 비김 " + same + "번");
 	}
 }

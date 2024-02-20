@@ -13,9 +13,10 @@ public class Main {
 //		new RepeatController().empInputData();
 //		new RepeatController().forApp2();
 //		new RepeatController().forInFor();
-		new RepeatController().whileTest();
-		
-//		new RepeatController().bananaTest1();
-//		new RepeatController().bananaTest2();
-	}
+//		new RepeatController().whileTest();
+//		new RepeatController().whileCalculator();
+//		new RepeatController().continueBreakTest();
+//		new RepeatController().randomTest();
+		new RepeatController().rspGame();
+	} 
 }
