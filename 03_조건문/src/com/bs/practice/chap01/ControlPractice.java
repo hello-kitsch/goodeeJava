@@ -193,6 +193,7 @@ public class ControlPractice {
 		System.out.println("7. BMI"); 
 		System.out.println("8. 계산기"); 
 		System.out.println("9. P/F"); 
+		System.out.println("11. 비밀번호 설정"); 
 		int choice = sc.nextInt();
 		System.out.println("선택: " + choice);
 		switch(choice) {
@@ -205,6 +206,42 @@ public class ControlPractice {
 			case 7: practice7(); break;
 			case 8: practice8(); break;
 			case 9: practice9(); break;
+			case 11: practice11(); break;
 		}
+	}
+	
+	public void practice11() {
+	    Scanner sc = new Scanner(System.in);
+	    String word ="";
+	    while(true) {
+	        System.out.print("4자리 정수를 입력: ");
+	        word = sc.nextLine();
+	        if(word.length()>4 || word.length()<4) {
+	            System.out.println("자리 수 안맞음");
+	            continue;
+	        }
+	        else {
+	    	    int count = 0;
+	    	    t:
+	    	    for(int i=0; i<4; i++) {
+	    	        int num1 = (int)word.charAt(i) - 48;
+	    	        for(int j=0; j<4; j++) {
+	    	            int num2 = (int)word.charAt(j) - 48;
+	    	            if(i != j) {
+	    	                if(num1 == num2) {
+	    	                    count++;
+	    	                    System.out.println("중복값 있음");
+	    	                    break t;
+	    	                }
+	    	            }
+	    	        }
+	    	    }
+	    	    if(count == 0) {
+	    	        System.out.println("생성 성공");
+	    	        break;
+	    	    }
+	        }
+	        
+	    }
 	}
 }

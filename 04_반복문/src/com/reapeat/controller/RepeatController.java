@@ -1,6 +1,5 @@
 package com.reapeat.controller;
 
-import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -195,10 +194,32 @@ public class RepeatController {
 			char ch = test2.charAt(i);
 			System.out.println(ch);
 		}
-		
+	}
+	public void forApp3() {
 		//숙제1.사용자에게 입력받은 값에 소문자가 있는지 확인+소문자가 몇개있는지 확인
+		Scanner sc = new Scanner(System.in);
+		System.out.print("입력: ");
+		String str = sc.nextLine();
+		int count1 = 0;
+		for(int i=0; i<str.length(); i++) {
+		    char ch = str.charAt(i);
+		    if(ch>='a' && ch<='z') {
+		        count1++;
+		    }
+		}
+		System.out.println(count1 + " 개");
+		
 		//숙제2.문자열,문자를 입력받아 문자열에 문자가 있는지 확인+문자가 몇개 있는지 확인
-
+		System.out.print("문자열 입력: ");
+		String str2 = sc.nextLine();
+		int count2 = 0;
+		for(int i=0; i<str2.length(); i++) {
+		    char ch = str2.charAt(i);
+		    if(ch>='A' && ch<='z') { //if( ((int)ch<=0 && (int)ch<=32) || (int)ch==127 )
+		        count2++;
+		    }
+		}
+		System.out.println(count2 + " 개");
 	}
 	
 	public void forInFor() {
@@ -428,69 +449,5 @@ public class RepeatController {
 		for(int i=0; i<10; i++) {
 			System.out.println(rnd.nextInt(10));
 		}
-	}
-	
-//	 설명 
-//  - 사용자에게 가위, 바위, 보 중 한개를 입력하도록하고(입력방식은 숫자)
-//  - 컴퓨터가 랜덤값으로 세개중 하나의 데이터를 대입
-//  - 컴퓨터의 값과 사용자의 값을 비교하여 다음의 결과출력
-//    같으면 비겼습니다. 출력 후 다시 사용자와 컴퓨터가 선택할 수 있도록 로직구성
-//    컴퓨터가 사용자에게 이기면 컴퓨터가 이겼습니다. 출력
-//    사용자가 컴퓨터에게 이기면 사용자가 있겼습니다. 출력   
-//
-// -  승자가 나왔으면 다시 하겠습니다 출력 
-//     다시하면 위에 로직 다시 실행
-//     종료하면 프로그램 종료
-// - 추가 : 만일 위 내용을 쉽게 처리 했으면 프로그램 종료시 지금까지 전적을 출력
-//        컴퓨터 승 00번, 사용자 승 00번
-	public void rspGame() {
-		Scanner sc = new Scanner(System.in);
-		int comWin = 0, userWin = 0, same = 0;
-		boolean ctn = true;
-		do {
-			System.out.print("1. 가위\n2. 바위\n3. 보\n중에 선택: ");
-			int user = sc.nextInt();
-			if(user < 1 || user > 3) {
-				System.out.println("올바른 선택지를 입력하세요");
-				continue;
-			}
-			int com = (int)(Math.random()*3) +1;
-			System.out.println("컴퓨터: " + com);
-			if (com == user) {
-				System.out.println("비겼습니다.");
-				same++;
-				continue;
-			} else if(com==1) {
-				switch(user) {
-					case 2: System.out.println("사용자가 이겼습니다."); userWin++; break;
-					case 3: System.out.println("컴퓨터가 이겼습니다."); comWin++; break;
-				}
-			} else if(com==2) {
-				switch(user) {
-				case 1: System.out.println("컴퓨터가 이겼습니다."); comWin++; break;
-				case 3: System.out.println("사용자가 이겼습니다."); userWin++; break;
-				}
-			} else if(com==3) {
-				switch(user) {
-				case 1: System.out.println("사용자가 이겼습니다."); userWin++; break;
-				case 2: System.out.println("컴퓨터가 이겼습니다."); comWin++; break;
-				}
-			}
-			while(true) { 
-				System.out.print("다시 하시겠습니까? (Y/N)");
-				char ch = sc.next().charAt(0);
-				if(ch == 'Y' || ch == 'y') {
-					ctn = true;
-					break;
-				} else if(ch == 'N' || ch == 'n') {
-					System.out.println("가위바위보 프로그램을 종료합니다.");
-					ctn = false;
-					break;
-				} else {
-					System.out.println("잘못 입력하셨습니다.");
-				}
-			}
-		} while (ctn);
-		System.out.println("컴퓨터 승 " + comWin + "번, 사용자 승 " + userWin + "번, 비김 " + same + "번");
 	}
 }

@@ -12,11 +12,12 @@ public class Main {
 //		new RepeatController().forApp();
 //		new RepeatController().empInputData();
 //		new RepeatController().forApp2();
+		new RepeatController().forApp3();
 //		new RepeatController().forInFor();
 //		new RepeatController().whileTest();
 //		new RepeatController().whileCalculator();
 //		new RepeatController().continueBreakTest();
 //		new RepeatController().randomTest();
-		new RepeatController().rspGame();
+//		new RepeatController().rspGame();
 	} 
 }
