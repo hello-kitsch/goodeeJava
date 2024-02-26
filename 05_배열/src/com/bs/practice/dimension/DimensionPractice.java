@@ -50,16 +50,17 @@ public class DimensionPractice {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("검색할 학생 이름을 입력하세요: ");
 		String student = sc.next();
+		int count = 0;
 		for(int i=0; i<3; i++) {
 			for(int j=0; j<2; j++) {
 				if(arr1[i][j].equals(student)) {
 					System.out.println("검색하신 " + student + "학생은 1분단의 (" + i + "," + j + ")에 있습니다.");
+					count++; break;
 				} else if(arr2[i][j].equals(student)) {
 					System.out.println("검색하신 " + student + "학생은 2분단의 (" + i + "," + j + ")에 있습니다.");
-				} else {
-					System.out.println("그런 학생은 없습니다.");
-				}
+					count++; break;
+				} 
 			}
-		}
+		} if(count == 0) System.out.println("그런 학생은 없습니다.");
 	}
 }
