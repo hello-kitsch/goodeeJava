@@ -16,4 +16,28 @@ public class Animal {
 	public String getName() {
 		return this.name;
 	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+	public double getWeight() {
+		return weight;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setFood(String food) {
+		this.food = food;
+	}
+	public String getFood() {
+		return food;
+	}
 }
