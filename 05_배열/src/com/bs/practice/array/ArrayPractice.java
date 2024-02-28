@@ -42,11 +42,31 @@ public class ArrayPractice {
 		System.out.println("문자: ");
 		char ch = sc.nextLine().charAt(0);
 		int count = 0;
+		System.out.print("application에 i가 존재하는 위치(인덱스): ");
 		for(int i=0; i<str.length(); i++) {
 			if(str.charAt(i) == ch) {
 				count++;
-				
+				System.out.print(i + " ");
 			}
 		}
+		System.out.println();
+		System.out.println(ch +" 개수: " + count);
+	}
+	
+	public void practice6() {
+		Scanner sc = new Scanner(System.in);
+		String[] seven = {"월","화","수","목","금","토","일"};
+		System.out.print("0~6 사이 숫자 입력: ");
+		int num = sc.nextInt();
+		if(num >= 0 && num <= 6) 
+			System.out.println(seven[num] + "요일");
+		else
+			System.out.println("잘못 입력하셨습니다.");
+	}
+	
+	public void practice7() {
+		Scanner sc = new Scanner(System.in);
+		int[] arr = new int[sc.nextInt()];
+		
 	}
 }
