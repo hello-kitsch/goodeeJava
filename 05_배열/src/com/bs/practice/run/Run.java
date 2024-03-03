@@ -13,7 +13,7 @@ public class Run {
 //		ap.practice4();
 //		ap.practice5();
 //		ap.practice6();
-		ap.practice7();
+//		ap.practice7();
 //		ap.practice8();
 //		ap.practice9();
 //		ap.practice10();
@@ -25,6 +25,13 @@ public class Run {
 //		ap.practice16();
 		
 		DimensionPractice dp = new DimensionPractice();
+//		dp.practice1();
+//		dp.practice2();
+//		dp.practice3();
+//		dp.practice4();
+//		dp.practice5();
+//		dp.practice6();
+		dp.practice7();
 //		dp.practice8();
 	}
 }

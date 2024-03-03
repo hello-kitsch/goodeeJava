@@ -1,5 +1,7 @@
 package ps.controller;
 
+import java.util.Scanner;
+
 public class UpAndDown {
     //up&down게임 만들기
    	//랜덤으로 1~50까지 수 한개를 저장하고

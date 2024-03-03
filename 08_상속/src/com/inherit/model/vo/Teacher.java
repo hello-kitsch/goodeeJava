@@ -11,7 +11,7 @@ public class Teacher extends Person {
 	public Teacher() {	}
 	
 	
-	public Teacher(String teacherName, int age, String address, String phone, String[] subject, int career) {
+	public Teacher(String[] subject, int career) {
 		super();
 		this.subject = subject;
 		this.career = career;

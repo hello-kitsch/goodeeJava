@@ -8,16 +8,27 @@ public class Student extends Person {
 	private int grade;
 	private int classNumber;
 	
-	public Student() { }
+	public Student() { 
+//		super() 자동 생성
+	}
 
 	
-	public Student(String name, int age, String address, String phone, int grade, int classNumber) {
+	public Student(int grade, int classNumber) {
 		super();
+		name = "유병승";
+		setName("유병승");
+		this.grade = grade;
+		this.classNumber = classNumber;
+		super.test();
+	}
+
+	public Student(String name, int age, String address,
+			String phone, int grade, int classNumber) {
+		super(name, age, address, phone);
 		this.grade = grade;
 		this.classNumber = classNumber;
 	}
-
-
+	
 	public int getGrade() {
 		return grade;
 	}
@@ -36,5 +47,20 @@ public class Student extends Person {
 	public void setClassNumber(int classNumber) {
 		this.classNumber = classNumber;
 	}
-
+	
+//	@Override
+//	public void test() {
+//		System.out.println("studentTest메소드");
+//	}
+	
+	public String infoStudent() {
+		return super.name + " " + super.getAge() + " " + super.getAddress() + " " + 
+				super.getPhone() + " " + getGrade() + " " + getClassNumber();
+	}
+	
+	@Override
+	public String toString() { //객체의 대표값
+		return super.name + " " + super.getAge() + " " + super.getAddress() + " " + 
+		super.getPhone() + " " + getGrade() + " " + getClassNumber();
+	}
 }

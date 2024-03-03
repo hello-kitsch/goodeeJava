@@ -1,7 +1,7 @@
 package com.inherit.model.vo;
 
-public class Person {
-	private String name;
+public class Person extends Parent {
+	protected String name;
 	private int age;
 	private String address;
 	private String phone;
@@ -12,13 +12,12 @@ public class Person {
 	}
 
 	
-	Person(String name, int age, String address, String phone, String email) {
+	public Person(String name, int age, String address, String phone) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.address = address;
 		this.phone = phone;
-		this.email = email;
 	}
 
 	public String getName() {
@@ -60,5 +59,8 @@ public class Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
+	protected final void test() {
+		System.out.println("PersonTest메소드");
+	}
 }

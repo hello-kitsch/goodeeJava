@@ -5,19 +5,7 @@ import com.student.model.vo.Student;
 public class StudentDao {
 //	private Student[] stdArr = new Student[3];
 	private Student[] s = new Student[3];
-	
-	public int getSLength() {
-		return s.length;
-	}
-	
-	public int getSIndex(int num) {
-		for(int i=0; i<s.length; i++) {
-			if(s[i] != null && s[i].getNumber() == num)
-				return i;
-		}
-		return -1;
-	}
-	
+
 	public boolean insertStudent(Student s) {
 		for(int i=0; i<this.s.length; i++) {
 			if(this.s[i] == null) {
