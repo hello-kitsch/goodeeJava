@@ -1,7 +1,10 @@
 package com.objarr.run;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
+import com.objarr.common.CheckData;
 import com.objarr.model.vo.Car;
 import com.objarr.model.vo.Food;
 import com.objarr.model.vo.Fruit;
@@ -169,34 +172,92 @@ public class Main {
 		Fruit[] fruits = new Fruit[5];
 		Scanner sc = new Scanner(System.in);
 		fruits[0] = new Fruit("복숭아", 5, "분홍", 8000);
-		fruits[1] = new Fruit("복숭아", 5, "분홍", 8000);
-		fruits[2] = new Fruit("복숭아", 5, "분홍", 8000);
-		fruits[3] = new Fruit("복숭아", 5, "분홍", 8000);
-		fruits[4] = new Fruit("복숭아", 5, "분홍", 8000);
+		fruits[1] = new Fruit("딸기", 6, "분홍", 4000);
+		fruits[2] = new Fruit("바나나", 4, "분홍", 5000);
+		fruits[3] = new Fruit("배", 3, "분홍", 9000);
+		fruits[4] = new Fruit("사과", 8, "분홍", 6000);
 				
-		for(Fruit f1 : fruits) {
-			System.out.println(f1.infoFruit());
-		}
-		for(Fruit f1 : fruits) {
-			System.out.println("과일 이름 입력: ");
-			f1.setName(sc.nextLine());
-			System.out.println("과일 무게 입력: ");
-			f1.setWeight(sc.nextDouble());
-			System.out.println("과일 색상 입력: ");
-			f1.setColor(sc.nextLine());
-			System.out.println("과일 가격 입력: ");
-			f1.setPrice(sc.nextInt());
-		}
-		for(Fruit f1 : fruits) {
-			if(f1.getWeight() > 3)
-				System.out.println(f1.infoFruit());
-		}
-		for(Fruit f1 : fruits) {
-			if(f1.getPrice() > 3000)
-				System.out.println(f1.infoFruit());
-		}
+//		for(Fruit f1 : fruits) {
+//			System.out.println(f1.infoFruit());
+//		}
+//		for(Fruit f1 : fruits) {
+//			System.out.println("과일 이름 입력: ");
+//			f1.setName(sc.nextLine());
+//			System.out.println("과일 무게 입력: ");
+//			f1.setWeight(sc.nextDouble());
+//			System.out.println("과일 색상 입력: ");
+//			f1.setColor(sc.nextLine());
+//			System.out.println("과일 가격 입력: ");
+//			f1.setPrice(sc.nextInt());
+//		}
+//		for(Fruit f1 : fruits) {
+//			if(f1.getWeight() > 3)
+//				System.out.println(f1.infoFruit());
+//		}
+//		for(Fruit f1 : fruits) {
+//			if(f1.getPrice() > 3000)
+//				System.out.println(f1.infoFruit());
+//		}
 		
-
+		Fruit[] result = null;
+		//무게가 n 이상인 로직
+		result = searchFruit(fruits, new CheckData() {
+			@Override
+			public boolean check(Fruit f, Object d) {
+				return f.getWeight() >= (double) d;
+			}
+		}, 5.0);
+		System.out.println(Arrays.toString(result));
+		
+		//가격이 n이상인 로직
+		result = searchFruit(fruits, (f1,d)->f1.getPrice()>=(int)d,6000);
+		System.out.println(Arrays.toString(result));
 	}
-
+	//익명 구현 객체를 잘 쓰는 예시
+	public static Fruit[] searchFruit(Fruit[] ori, CheckData filter, Object d) {
+		Fruit[] result = new Fruit[ori.length];
+		int count = 0;
+		for(Fruit f : ori) {
+			if(filter.check(f, d)) {
+				System.out.println(f);
+				result[count++] = f;
+			}
+		}
+		return result;
+	}
+	
+	public static Fruit[] searchFruits2(Fruit[] ori, Object data, Predicate<Fruit> filter) {
+		Fruit[] result = new Fruit[ori.length];
+		int count = 0;
+		for(Fruit f : ori) {
+			if(filter.test(f)) {
+				System.out.println(f);
+				result[count++] = f;
+			}
+		}
+		return result;
+	}
+	
+//	//익명 구현 객체를 잘 쓰는 예시(못쓴 예)
+//	public Fruit[] searchWeight(Fruit[] ori, double weight) {
+//		Fruit[] resultFruits = new Fruit[ori.length];
+//		int count = 0;
+//		for(Fruit f : ori) {
+//			if(f.getWeight() > weight) {
+//				resultFruits[count++] = f;
+//			}
+//		}
+//		return resultFruits;
+//	}
+//	
+//	public Fruit[] searchPrice(Fruit[] ori, int price) {
+//		Fruit[] resultFruits = new Fruit[ori.length];
+//		int count = 0;
+//		for(Fruit f : ori) {
+//			if(f.getPrice() > price) {
+//				resultFruits[count++] = f;
+//			}
+//		}
+//		return resultFruits;
+//	}
 }

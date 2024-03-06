@@ -51,4 +51,9 @@ public class Fruit {
 	public String infoFruit() {
 		return name + " " + weight + " " + color + " " + price;
 	}
+
+	@Override
+	public String toString() {
+		return "Fruit [name=" + name + ", weight=" + weight + ", color=" + color + ", price=" + price + "]";
+	}
 }
