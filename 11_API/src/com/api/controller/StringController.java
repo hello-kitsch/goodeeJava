@@ -11,7 +11,7 @@ public class StringController {
 		 * - String: 기본 자료형처럼 사용하는 클래스, ""라는 리터럴을 =연산으로 저장
 		 * - StringBuffer/StringBuilder: 클래스 사용방식으로 사용 -> new 클래스명();
 		 * 		->new 클래스명("");
-		 * String 불편, StringBuffer/StringBuilder 가변
+		 * String 불변, StringBuffer/StringBuilder 가변
 		 */
 		String str = "유병승";
 		System.out.println(str);
@@ -36,7 +36,7 @@ public class StringController {
 		
 		/*
 		 * String 클래스가 제공하는 메소드(기능)들...
-		 * 1. (문자열변수 || "") .concat("합칠 문자") 메소드: 문자열을 합쳐주는 기능
+		 * 1. (문자열변수 || "").concat("합칠 문자") 메소드: 문자열을 합쳐주는 기능
 		 * -> +=연산과 동일한 기능
 		 */
 		String test = "GDJ79";

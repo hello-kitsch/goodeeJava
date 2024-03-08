@@ -1,10 +1,12 @@
 package com.exception.controller;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import com.exception.common.exception.MyCheckedException;
+import com.exception.common.exception.MyUnCheckedException;
 
 public class ExceptionController {
 	public void uncheckedException() {
@@ -72,7 +74,7 @@ public class ExceptionController {
 		int[] intArr = new int[10];
 		try {
 			name.length();
-			System.out.println(intArr[10]);
+			System.out.println(intArr[10]); //jvm이 throw 명령어를 실행?!
 			System.out.println("예외 발생 구문 다음 로직");
 			System.out.print("나이: ");
 		} catch(NullPointerException e) {
@@ -147,5 +149,34 @@ public class ExceptionController {
 		FileInputStream fis
 				= new FileInputStream("test.txt");
 		int a = fis.read();
+	}
+	
+	
+	//내 프로젝트에서 사용할 별도의 Exception 만들기
+	//Exception 클래스를 상속받는 클래스 선언
+	public void myException() {
+		//나의 Exception 활용하기
+		try {
+			throw new MyCheckedException("나의 예외발생!");
+		} catch (MyCheckedException e) {
+			e.printStackTrace();
+			System.out.println(e.getTriggerTime());
+		}
+		
+		throw new MyUnCheckedException("나의 예외2");
+		
+//		System.out.println("실행되니??");
+	}
+	
+	public void exceptionUse(Object o) {
+		if(o instanceof Integer) {
+			
+		} else if(o instanceof Double) {
+			
+		} else if(o instanceof String) {
+			
+		} else {
+			throw new MyUnCheckedException("Integer, Double, String만 가능합니다");
+		}
 	}
 }
