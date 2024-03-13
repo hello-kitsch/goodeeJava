@@ -65,6 +65,7 @@ public class IOController {
 		File delFile = new File("./test/test1/test2/myfile");
 		boolean result = delFile.delete();
 		System.out.println(result);
+		
 		//4. 폴더 삭제하기
 		//폴더 내에 아무것도 없어야한다.
 		File delDir = new File("./test/test1/test2");
@@ -133,22 +134,11 @@ public class IOController {
 //		Arrays.stream(files).forEach(f1->System.out.println(f1));
 		for(File f1 : files)
 			System.out.println(f1);
-		
 	}
 	
 	//내가 원하는 폴더에 원하는 파일 생성하는 기능 만들기
 	//폴더명, 파일명을 전달받아서 생성
 	public boolean newfile(String path, String fileName) {
-//		File dir, f;
-//		if(foldername.indexOf("c:") == -1 || foldername.indexOf("C:") == -1 
-//				&& foldername.indexOf("./") != 0) { //파일명일때
-//			dir = new File("./" + foldername);
-//			f = new File("./" + foldername + "/" + filename);
-//		} else { //경로일때
-//			dir = new File(foldername);
-//			f = new File(foldername + "/" + filename);
-//		}
-		
 		path.indexOf(":");
 		if(path.startsWith("/")) {
 			path = path.replace("/", "");
@@ -165,4 +155,3 @@ public class IOController {
 		}
 	}
 }
-

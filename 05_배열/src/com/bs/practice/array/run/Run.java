@@ -1,4 +1,4 @@
-package com.bs.practice.run;
+package com.bs.practice.array.run;
 
 import com.bs.practice.array.ArrayPractice;
 import com.bs.practice.dimension.DimensionPractice;

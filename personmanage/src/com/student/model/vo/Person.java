@@ -1,6 +1,8 @@
 package com.student.model.vo;
 
-public abstract class Person {
+import java.io.Serializable;
+
+public abstract class Person implements Serializable {
 	private static int count;
 	private int number;
 	private String name;

@@ -25,50 +25,48 @@ public class StudentMainView implements MainView {
 	}
 	@Override
 	public Person inputNewInfo() {
-		String name = "", address = "", phone = "", genderX = "";
+		String name = "", address = "", phone = "";
+		char gender = ' ';
 		int age = 0, grade = 0, classNumber = 0;
 		double height = 0; 
 		
 		printMsg("이름 : ");
 		name = inputString();
 
-		
 		printMsg("나이 : ");
 		age = inputInt();
-	
 		
 		printMsg("학년 : ");
 		grade = inputInt();
 
-		
 		printMsg("반 : ");
 		classNumber = inputInt();
 
-		
 		printMsg("성별 : ");
-		genderX = inputString();
+		gender = inputString().charAt(0);
 
-		
 		printMsg("키 : ");
 		height = inputDouble();
 
-		
 		printMsg("주소 : ");
 		address = inputString();
 
-		
 		printMsg("전화번호 : ");
 		phone = inputString();
 		
-		return new Student(name, age, genderX.charAt(0), height, address, phone, grade, classNumber);
+		return new Student(name, age, gender, height, address, phone, grade, classNumber);
 	}
 
 	@Override
 	public Person inputEditInfo() {
 		Scanner sc = new Scanner(System.in);
-		String name = "", address = "", phone = "", genderX = "";
-		int age = 0, grade = 0, classNumber = 0;
-		double height = 0; 
+		String name = "", address = "", phone = "";
+		int num = 0, age = 0, grade = 0, classNumber = 0;
+		double height = 0;
+		char gender = ' ';
+		
+		printMsg("수정할 학생의 번호 입력: ");
+		num = inputInt();
 		
 		printMsg("이름을 수정하시려면 y를 입력하세요");
 		if(check()) {
@@ -87,7 +85,7 @@ public class StudentMainView implements MainView {
 		printMsg("성별을 수정하시려면 y를 입력하세요");
 		if(check()) {
 			System.out.print("성별 : ");
-			genderX = inputString();
+			gender = inputString().charAt(0);
 			infoArr[2] = 1;
 		}
 		
@@ -125,7 +123,7 @@ public class StudentMainView implements MainView {
 			classNumber = inputInt();
 			infoArr[7] = 1;
 		}
-		return new Student(name, age, genderX.charAt(0), height, address, phone, grade, classNumber);
+		return new Student(num, name, age, gender, height, address, phone, grade, classNumber);
 	}
 	@Override
 	public int searchMetaInfo() {

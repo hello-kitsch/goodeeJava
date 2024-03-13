@@ -185,7 +185,6 @@ public class IOStreamController {
 			String[] strArrAnimals = new String(sb).split("\n");
 			
 			//3. String을 ,문자를 기준으로 파싱하여 Animal 객체에 생성해 넣기 (String -> animal)
-			
 			animals = new Animal[strArrAnimals.length];
 			int count = 0;
 			for(String a : strArrAnimals) {

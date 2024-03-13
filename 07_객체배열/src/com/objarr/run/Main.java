@@ -201,17 +201,20 @@ public class Main {
 		
 		Fruit[] result = null;
 		//무게가 n 이상인 로직
-		result = searchFruit(fruits, new CheckData() {
+		result = searchFruit(fruits, new CheckData<Fruit, Double>() {
 			@Override
-			public boolean check(Fruit f, Object d) {
+			public boolean check(Fruit f, Double d) {
 				return f.getWeight() >= (double) d;
 			}
 		}, 5.0);
 		System.out.println(Arrays.toString(result));
 		
 		//가격이 n이상인 로직
-		result = searchFruit(fruits, (f1,d)->f1.getPrice()>=(int)d,6000);
+		CheckData<Fruit, Integer> filter = (f1, d) -> f1.getPrice() >= d;
+		result = searchFruit(fruits, filter, 6000);
 		System.out.println(Arrays.toString(result));
+		
+		CheckData<Food, String> filter2 = (f1, d) -> f1.getName().contains(d);
 	}
 	//익명 구현 객체를 잘 쓰는 예시
 	public static Fruit[] searchFruit(Fruit[] ori, CheckData filter, Object d) {

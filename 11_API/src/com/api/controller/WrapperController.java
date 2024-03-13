@@ -9,7 +9,7 @@ public class WrapperController {
 		 */
 		Integer integer = 10;
 		int i = integer;
-	
+
 		/*
 		 * 상속관계에 있는 다형성을 이용할 수 있다.
 		 */

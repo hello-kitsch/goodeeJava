@@ -1,10 +1,11 @@
 package com.io.model.vo;
 
 import java.io.InputStream;
+import java.io.Serializable;
 import java.nio.charset.Charset;
 
 
-public class Animal {
+public class Animal implements Serializable{
 	private String name;
 	private int age;
 	private double weight;

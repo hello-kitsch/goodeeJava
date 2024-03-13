@@ -8,6 +8,15 @@ public class Student extends Person {
 	
 	public Student() {}
 
+	public Student(int num, String name, int age, char gender, 
+			double height, String address, String phone, 
+			int grade, int classNumber) {
+		super(name, age, gender, height, address, phone);
+		super.setNumber(num);
+		this.grade = grade;
+		this.classNumber = classNumber;
+	}
+	
 	public Student(String name, int age, char gender, 
 			double height, String address, String phone, 
 			int grade, int classNumber) {
